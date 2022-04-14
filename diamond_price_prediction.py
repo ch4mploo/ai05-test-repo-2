@@ -33,7 +33,10 @@ print(diamond_label.head())
 
 #%%
 #5. Ordinal encode categorical features
-ordinal_encoder = OrdinalEncoder()
+cut_categories = ['Fair','Good','Very Good','Premium','Ideal']
+color_categories = ['J','I','H','G','F','E','D']
+clarity_categories = ['I1','SI2','SI1','VS2','VS1','VVS2','VVS1','IF']
+ordinal_encoder = OrdinalEncoder(categories=[cut_categories,color_categories,clarity_categories])
 diamond_features[['cut','color','clarity']] = ordinal_encoder.fit_transform(diamond_features[['cut','color','clarity']])
 #Check the transformed features
 print("---------------Transformed Features--------------------")
